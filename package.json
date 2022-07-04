@@ -6,6 +6,9 @@
   "repository": "https://github.com/ShivaRapolu01/CallEdge-GmeetClone.git",
   "author": "Shiva Rapolu <vishu.rapolu@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
   "dependencies": {
     "cookie-session": "^2.0.0",
     "dotenv": "^16.0.1",

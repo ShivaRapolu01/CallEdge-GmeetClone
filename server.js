@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const session = require('express-session')
-
+const idGenerator = require('./utils/id_generator')
 const app = express()
 require('dotenv').config()
 const server = require('http').Server(app)
@@ -49,10 +49,10 @@ app.use(passport.session());
 
 
 
-
-mongoose.connect(process.env.dbURI, () => {
-    console.log('connected to mongodb');
-});
+//TODO setting up and connecting to mongoDB database 
+// mongoose.connect(process.env.dbURI, () => {
+//     console.log('connected to mongodb');
+// });
 
 
 const authCheck = (req, res, next) => {
@@ -66,9 +66,9 @@ const authCheck = (req, res, next) => {
 
 
 app.get('/', authCheck,  (req, res) => {
-    console.log(req.user)
+    // console.log(req.user)
     meetID = idGenerator();
-    console.log(req.isAuthenticated())
+    // console.log(req.isAuthenticated())
     res.render('home', {user: req.user.username, email: req.user.email, meetID: meetID})
 })
 
@@ -111,7 +111,6 @@ app.get('/logout', function(req, res, next) {
 app.get('/auth/google/redirect', passport.authenticate('google'), (req, res) => {
     username = req.user.username
     res.redirect('/');
-    
 });
 
 
@@ -131,22 +130,12 @@ io.on('connection', socket => {
         socket.join(roomID)
         socket.broadcast.to(roomID).emit('user-connected', userID)
 
-        socket.on("screen-shared", (roomID, screenID) => {
-            console.log("came in screen share");
-            socket.broadcast.to(roomID).emit('screen-shared', screenID)
-        })
 
         socket.on("send-message", (message, USER) => {
             console.log("message received in backend", userID)
             socket.broadcast.to(roomID).emit("receive-message", { by: USER, message: message });
         })
-        socket.on('canvas-data', (data)=> {
-            console.log("canvas data came to server");
-            socket.broadcast.emit('canvas-data', data);
-        })
-        socket.on('screen-unshared', (screenID) =>{
-            socket.to(roomID).emit('user-disconnected', screenID);
-        })
+
         socket.on('end-call', () =>{
             socket.to(roomID).emit('user-disconnected', userID);
             

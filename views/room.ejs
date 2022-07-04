@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet | callEDGE</title>
+    <title> Meet | callEDGE</title>
     <link rel="shortcut icon" href="#">
     <script>
         const ROOM_ID = "<%= roomId %>"
@@ -21,12 +21,9 @@
 
 
     <script src="/socket.io/socket.io.js" defer></script>
-    <link rel="stylesheet" href="/css/drawingboard.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/room.css">
     <script src="/js/room.js" defer></script>
-    <script src="/js/screenshare.js" defer></script>
-    <script src="/js/utils/drawingboard.js"></script>
 
     <style>
     </style>
@@ -102,14 +99,7 @@
 </body>
 
 <script>
-    var whiteBoard = new DrawingBoard.Board('whiteboard-wrapper', {
-        controls: [
-            'Color',
-            { Size: { type: "range" } },
-            'DrawingMode',
-            'Navigation',
-        ]
-    });
+
 </script>
 
 </html>
