@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet | callEDGE</title>
+    <link rel="shortcut icon" href="#">
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+        const USER = "<%= user %>"
+    </script>
+    <script defer src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+
+    <script src="/socket.io/socket.io.js" defer></script>
+    <link rel="stylesheet" href="/css/drawingboard.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/room.css">
+    <script src="/js/room.js" defer></script>
+    <script src="/js/screenshare.js" defer></script>
+    <script src="/js/utils/drawingboard.js"></script>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-left">
+            <div class="main-videos">
+                <div class="whiteboard-wrapper" id="whiteboard-wrapper">
+                    
+                </div>
+                <div id="Dish">
+
+                </div>
+            </div>
+            <div class="main-controls">
+                <div class="main-controls-block">
+                    <%= roomId %>
+                        <span style="font-size: 1.2rem; margin-bottom: 12px;" class="material-icons copy"
+                            onclick="copyToClipboard('<%= roomId %>')">content_copy</span>
+                </div>
+                <div class="main-controls-block">
+                    <div onclick="muteUnmute()" class="main-controls-button main-mute_button">
+                        <span class="material-icons mic">mic</span>
+                    </div>
+                    <div onclick="playStop()" class="main-controls-button main-video_button">
+                        <span class="material-icons videocam">videocam</span>
+                    </div>
+                    <div onclick="shareUnshare()" class="main-controls-button">
+                        <span class="material-icons shareUnshare">screen_share</span>
+                    </div>
+                    <div onclick="endCall()" class="main-controls-button" style="background-color: red;">
+                        <span class="material-icons">call_end</span>
+                    </div>
+                </div>
+                <div class="main-controls-block">
+                    <div onclick="sendDrawing()" class="main-controls-button">
+                        <span class="material-icons">people</span>
+                    </div>
+                    <div onclick="toggleChat()" class="main-controls-button">
+                        <span class="material-icons">chat</span>
+                    </div>
+                    <div onclick="toggleWhiteboard()" class="main-controls-button">
+                        <span class="material-icons">note_alt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat">
+            <div class="main-header">
+                <h6>Chat</h6>
+            </div>
+            <div class="main-chat_window">
+                <div class="messages">
+                    <div class="message my-message">
+                        Sample self message box
+                    </div>
+
+                    <div class="message other-message">
+                        <span style="font-size: 0.7rem; color: rgb(0, 0, 0, 0.4)">Shiva Rapolu</span><br>
+                        Sample remote message box
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="main-message_container">
+                <input id="chat_message" type="text" placeholder="Type message here...">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var whiteBoard = new DrawingBoard.Board('whiteboard-wrapper', {
+        controls: [
+            'Color',
+            { Size: { type: "range" } },
+            'DrawingMode',
+            'Navigation',
+        ]
+    });
+</script>
+
+</html>
