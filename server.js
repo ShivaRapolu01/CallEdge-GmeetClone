@@ -50,9 +50,9 @@ app.use(passport.session());
 
 
 //TODO setting up and connecting to mongoDB database 
-// mongoose.connect(process.env.dbURI, () => {
-//     console.log('connected to mongodb');
-// });
+mongoose.connect(process.env.dbURI, () => {
+    console.log('connected to mongodb');
+});
 
 
 const authCheck = (req, res, next) => {
