@@ -26,17 +26,18 @@ passport.use(
                 // user already present
                 console.log('user is: ', currentUser);
                 done(null, currentUser);
-            } else {
-                // create user in db
-                new User({
-                    username: profile.displayName,
-                    email: profile.emails[0].value,
-                    googleId: profile.id
-                }).save().then((newUser) => {
-                    console.log('created new user: ', newUser);
-                    done(null, newUser);
-                });
+            }else{
+                User.create({
+                    name:profile.displayName,
+                    googleId:profile.id,
+                    email:profile.emails[0].value
+                }).then(user=>{
+                    console.log("New user",user);
+                    done(null,user);
+                })
+                .catch(err=>console.log(err))
             }
-        });
+        }).catch(err=>console.log(err))
+
     })
 );

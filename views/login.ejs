@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <span class="text">Welcome to <span style="font-family: var(--font4);">callEDGE</span></span>
+        <span>
+            <a href="auth/google">
+            <div class="login-button">Login with google
+            </div>
+        </a>
+        </span>
+    </div>
+
+    <!-- particle stuff -->
+
+    <canvas class="background"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
+        integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.js"
+        integrity="sha512-BgV3bZfMmUklIZI+dP0SILdmQ0RBY2gxegFFyfgo4Ui56WhKF4Pny9LsV/l96jxDDA+2w47zAXA4IyHo2UT/Qg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+<script>
+    window.onload = function () {
+        Particles.init({
+            selector: '.background',
+            // connectParticles: true,
+            color: '#ffffff',
+        });
+    };
+</script>
+
+</html>

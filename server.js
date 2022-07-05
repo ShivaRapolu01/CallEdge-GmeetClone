@@ -50,10 +50,20 @@ app.use(passport.session());
 
 
 //TODO setting up and connecting to mongoDB database 
-mongoose.connect(process.env.dbURI, () => {
-    console.log('connected to mongodb');
-});
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.dbURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
+        console.log('MongoDB connected!!');
+    } catch (err) {
+        console.log('Failed to connect to MongoDB', err);
+    }
+};
+
+connectDB();
 
 const authCheck = (req, res, next) => {
     if(!req.user){
