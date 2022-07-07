@@ -22,16 +22,17 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- chip js -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+        <!-- chip js -->
+       <!-- Compiled and minified CSS -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <script src="js/utils/materialize.js" > </script>
+       <!-- Compiled and minified JavaScript -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   
 
 
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <style>
 </style>
@@ -68,7 +69,7 @@
                 </div>
             </div>
             <div class="input-box">
-                <span class="material-icons">keyboard</span><input placeholder="Enter meet link" id="meeting-link"
+                <span class="material-icons">keyboard</span><input placeholder="Enter meet ID" id="meeting-link"
                     class="meeting-link"></input>
                 <button id="join" class="join"
                     onclick="window.location = 'room/' + document.getElementById('meeting-link').value">

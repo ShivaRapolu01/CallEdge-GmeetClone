@@ -19,11 +19,12 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 
-
     <script src="/socket.io/socket.io.js" defer></script>
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/room.css">
-    <script src="/js/room.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../css/room.css">
+    <script src="../public/js/room.js" defer></script>
+    <script src="../public/js/screenshare.js" defer></script>
+    <script src="../public/js/utils/drawingboard.js"></script>
 
     <style>
     </style>
@@ -99,7 +100,14 @@
 </body>
 
 <script>
-
+    var whiteBoard = new DrawingBoard.Board('whiteboard-wrapper', {
+        controls: [
+            'Color',
+            { Size: { type: "range" } },
+            'DrawingMode',
+            'Navigation',
+        ]
+    });
 </script>
 
 </html>

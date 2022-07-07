@@ -5,6 +5,7 @@ const cookieSession = require('cookie-session');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const session = require('express-session')
+const nodemailer = require('nodemailer')
 const idGenerator = require('./utils/id_generator')
 const app = express()
 require('dotenv').config()
@@ -18,7 +19,6 @@ const io = require('socket.io')(server, {
     },
     allowEIO3: true
 })
-
 
 const { ExpressPeerServer } = require('peer');
 
@@ -158,5 +158,39 @@ io.on('connection', socket => {
 
 
 })
+
+// Mailing
+const emailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+       user: "calledge.office@gmail.com",
+       pass: process.env.password
+    },
+    debug: false,
+    logger: true
+});
+
+
+
+app.post('/invite', (req, res) => {
+    const meetID = req.body.meetID
+    const templateMaker = (id) => {
+        return  {
+            from: "calledge.office@gmail.com",
+            to: id,
+            subject: `Meeting Invitation`,
+            text: "Invitaion mail",
+            html: `<p>Hey callEDGE user!<br>You have been invited to a new meeting scheduled on <b> ${req.body.date}</b> at <b> ${req.body.time}</b>.<br>Do join in. See you there! </p>
+            Meet ID: <b>${meetID}</b> <br>
+             You can also <a href = "https://call-edge.herokuapp.com/room/${meetID}">click here </a> to join.`
+          };
+    }
+    req.body.mailIDs.forEach(id => {
+        emailTransporter.sendMail(templateMaker(id));
+    })
+    res.redirect('/');
+    // emailTransporter.sendMail(mailOptions);
+
+}) 
 
 server.listen(process.env.PORT || 3002)

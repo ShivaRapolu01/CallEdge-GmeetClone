@@ -17,6 +17,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "mongoose": "^6.4.2",
+    "nodemailer": "^6.7.7",
     "nodemon": "^2.0.18",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
