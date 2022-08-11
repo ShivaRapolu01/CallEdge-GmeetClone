@@ -3,7 +3,7 @@
 
 
 ## Features 
-- [ ] User authentication using Gmail-id.
+- [x] User authentication using Gmail-id.
 - [x] User’s should be able to share their screen.
 - [x] A chat box can be added where people can chat with others on the meet.
 - [x] A meeting reminder for scheduled meetings 15mins before the meeting through mail with the meet link.
