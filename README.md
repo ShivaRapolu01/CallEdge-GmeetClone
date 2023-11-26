@@ -6,6 +6,6 @@
 - [x] User authentication using Gmail-id.
 - [x] User’s should be able to share their screen.
 - [x] A chat box can be added where people can chat with others on the meet.
-- [x] A meeting reminder for scheduled meetings 15mins before the meeting through mail with the meet link.
+- [x] Inviting users to the meet via email 
 - [x] Whiteboard feature which can we used by users in the meeting.
 
